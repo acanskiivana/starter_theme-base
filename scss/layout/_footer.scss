@@ -1,0 +1,36 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+
+
+.footer {
+
+    &.grid-container {
+        row-gap: 50px;
+    }
+   
+    &__copyright {
+        margin-top: 22px;
+        display: block;
+    }
+
+    &__contact {
+        padding-right: 7rem;
+        li {
+            margin-bottom: 22px;
+        }
+       
+    }
+
+    &__menulist {
+
+        li {
+            margin-bottom: 17px;
+        }
+       
+    }
+
+    &__large-text {
+        margin-top: $spacingM;
+    }
+}

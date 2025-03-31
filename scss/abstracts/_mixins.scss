@@ -1,0 +1,183 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Responsive breakpoint manager
+// RESPONSIVE
+@use "sass:math";
+
+$breakpoints: (
+  'xsmall': (min-width: $xsmall),
+  'small': (min-width: $small),
+  'medium': (min-width: $medium),
+  'large': (min-width: $large),
+  'xlarge': (min-width: $xlarge),
+  'xxlarge': (min-width: $xxlarge),
+  'huge': (min-width: $huge)
+);
+
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(type-of($raw-query)=='string', unquote($raw-query), inspect($raw-query));
+
+    @media #{$query} {
+      @content;
+    }
+  }
+
+  @else {
+    @error 'No value found for `#{$breakpoint}`. '+'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+//Responsive font size and line height
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+//Responsive font size 
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 ==$u2 and $u1 ==$u3 and $u1 ==$u4 {
+    & {
+      font-size: $min-font-size;
+
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+// Responsive line-height
+@mixin line-height($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1==$u2 and $u1==$u3 and $u1==$u4 {
+    & {
+      line-height: $min-font-size;
+
+      @media screen and (min-width: $min-vw) {
+        line-height: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+
+      @media screen and (min-width: $max-vw) {
+        line-height: $max-font-size;
+      }
+    }
+  }
+}
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+
+    &,
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-within {
+      @content;
+    }
+  }
+
+  @else {
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-within {
+      @content;
+    }
+  }
+}
+
+// Create grid container 
+@mixin grid-container($columns) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-gap: $gap-size;
+}
+
+@mixin image-cover() {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@mixin cover() {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+// Font size 
+%size_h1 {
+  @include fluid-type(320px, 1439px, 48px, 56px);
+  line-height: $title-line-height;
+  // @include line-height(320px, 1439px, 44px, 77px);
+
+  // @include respond-to('xlarge') {
+  //   font-size: 5.6rem;
+  //   // line-height: 5.6rem;
+  // }
+}
+
+%size_h2 {
+  @include fluid-type(320px, 1439px, 32px, 48px);
+  // @include line-height(320px, 1439px, 40px, 69px);
+  line-height: $title-line-height;
+}
+
+%size_h3 {
+  @include fluid-type(320px, 1439px, 26px, 32px);
+  line-height: $title-line-height;
+}
+
+%size_h4 {
+  @include fluid-type(320px, 1439px, 22px, 26px);
+  line-height: $title-line-height;
+}
+
+%size_h5 {
+  @include fluid-type(320px, 1439px, 18px, 20px);
+  line-height: $title-line-height;
+}
+
+%size_h6 {
+  @include fluid-type(320px, 1439px, 16px, 18px);
+  @include line-height(320px, 1439px, 24px, 30px);
+}
+
+%base {
+  font-size: 16px;
+  line-height: $paragraph-line-height;
+}

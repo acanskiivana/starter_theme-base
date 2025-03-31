@@ -1,0 +1,35 @@
+.hero-slider__img {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  padding-top: 56.25%;
+  min-height: 300px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.hero-slider__img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.hero-slider__container {
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-slider__arrows {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}

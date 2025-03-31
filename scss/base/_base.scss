@@ -1,0 +1,60 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+html {
+  box-sizing: border-box;
+  font-size: 38%;
+  font-style: normal;
+
+  @include respond-to('medium') {
+    font-size: 40%;
+  }
+
+  @include respond-to('large') {
+    font-size: 58.25%;
+  }
+
+  @include respond-to('xlarge') {
+    font-size: 62.25%;
+  }
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+  color: $brand-color;
+  text-decoration: none;
+
+  @include on-event {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+
+body {
+  font-family: $title-font;
+  font-weight: 500;
+  color: $text-color;
+  @extend %base;
+  background-color: $background-color;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

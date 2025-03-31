@@ -1,0 +1,160 @@
+/* Base styles (mobile-first) */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.site-title {
+    position: relative;
+    z-index: 1001;
+}
+
+.main-navigation {
+    display: none;
+    /* Hidden by default on mobile */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: $accent-color;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    li {
+        position: relative;
+        width: 100%;
+
+        a {
+            display: block;
+            padding: 15px 20px;
+            color: $title-light;
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #555;
+        }
+    }
+
+    /* Submenu styles */
+    li ul {
+        display: none;
+        width: 100%;
+        background-color: #444;
+        padding: 0;
+        // transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+
+    li ul a {
+        padding: 10px;
+        white-space: nowrap;
+    }
+
+    .active {
+        .sub-menu {
+            display: block;
+        }
+    }
+}
+
+/* Toggle button for mobile */
+.menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: $background-dark;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+}
+
+/* When the menu is toggled */
+.main-navigation.menu-open {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+    overflow: scroll;
+    z-index: 1000;
+}
+
+/* Larger screen styles */
+@media (min-width: 768px) {
+
+    .site-header {
+        justify-content: space-between;
+    }
+
+    .main-navigation,
+    .main-navigation.menu-open {
+        flex-direction: row;
+        justify-content: center;
+        display: flex;
+        background-color: transparent;
+        position: inherit;
+        width: auto;
+        height: auto;
+        padding-top: inherit;
+        overflow: unset;
+
+        .menu {
+            flex-direction: row;
+            display: flex;
+        }
+
+        li {
+            width: auto;
+
+            ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #444;
+                min-width: 150px;
+                width: auto;
+
+            }
+
+            &:hover>ul {
+                display: block;
+
+            }
+
+            a {
+                color: $text-color;
+                text-align: left;
+                padding: 15px 20px;
+            }
+        }
+
+        .sub-menu {
+            z-index: 1000;
+        }
+    }
+
+    /* Hide the toggle button on larger screens */
+    .menu-toggle {
+        display: none;
+    }
+}

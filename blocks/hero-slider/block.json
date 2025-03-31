@@ -1,0 +1,17 @@
+{
+    "name": "acf/hero-slider",
+    "title": "Hero slider",
+    "description": "hero-slider section",
+    "script": [ "file:./hero-slider.js" ],
+    "style": [ "file:./hero-slider.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["hero-slider", "quote"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "hero-slider.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

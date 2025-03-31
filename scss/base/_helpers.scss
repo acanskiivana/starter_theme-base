@@ -1,0 +1,363 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.container {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  @include respond-to('small') {
+    padding-left: $container-right-padding;
+    padding-right: $container-left-padding;
+  }
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0;
+  /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.relative {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.list-style-none {
+  list-style: none;
+  padding: 0;
+  margin: 0
+}
+
+// Images 
+.cover-image {
+ @include image-cover;
+}
+
+.cover-image--100 {
+  padding-bottom: 100%;
+ }
+
+ .cover-image--16-9 {
+  padding-bottom: 56.25%;
+ }
+ 
+.background-cover {
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  background-position: center;
+}
+
+// Border 
+.border-radius-M {
+  border-radius: $radius-m;
+}
+
+.border-radius-S {
+  border-radius: $radius-s;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $stroke-color;
+}
+
+// Padding
+.padding-top-XXL {
+  padding-top: $spacingXL;
+}
+
+.padding-bottom-XXL {
+  padding-bottom: $spacingXXL;
+}
+
+.padding-top-XL {
+  padding-top: $spacingXL;
+}
+
+.padding-bottom-XL {
+  padding-bottom: $spacingXL;
+}
+
+.padding-top-L {
+  padding-top: $spacingL;
+}
+
+.padding-bottom-L {
+  padding-bottom: $spacingL;
+}
+
+.padding-top-M {
+  padding-top: $spacingM;
+}
+
+.padding-bottom-M {
+  padding-bottom: $spacingM;
+}
+
+.padding-top-S {
+  padding-top: $spacingS;
+}
+
+.padding-bottom-S {
+  padding-bottom: $spacingS;
+}
+
+// margin
+
+.margin-top-XXL {
+  margin-top: $spacingXL;
+}
+
+.margin-bottom-XXL {
+  margin-bottom: $spacingXXL;
+}
+
+.margin-top-XL {
+  margin-top: $spacingXL;
+}
+
+.margin-bottom-XL {
+  margin-bottom: $spacingXL;
+}
+
+.margin-top-L {
+  margin-top: $spacingL;
+}
+
+.margin-bottom-L {
+  margin-bottom: $spacingL;
+}
+
+.margin-top-M {
+  margin-top: $spacingM;
+}
+
+.margin-bottom-M {
+  margin-bottom: $spacingM;
+}
+
+.margin-top-S {
+  margin-top: $spacingS;
+}
+
+.margin-bottom-S {
+  margin-bottom: $spacingS;
+}
+
+
+// Margins
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.pt-0 {
+  padding-top: 0;
+}
+
+.pb-0 {
+  padding-bottom: 0;
+}
+
+// Color
+
+.dark-background {
+  background-color: $background-dark;
+
+  * {
+    color: $title-light;
+  }
+  
+}
+
+.accent-background {
+  background-color: $accent-color;
+}
+
+.section-text-light {
+  * {
+    color: $title-light;
+  }
+}
+
+
+
+// Flex 
+
+/* Display */
+.d-flex {
+  display: flex;
+}
+.d-inline-flex {
+  display: inline-flex;
+}
+
+/* Flex Direction */
+.flex-row {
+  flex-direction: row;
+}
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-column-reverse {
+  flex-direction: column-reverse;
+}
+
+/* Flex Wrap */
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+/* Justify Content */
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+/* Align Items */
+.items-start {
+  align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
+}
+.items-center {
+  align-items: center;
+}
+.items-baseline {
+  align-items: baseline;
+}
+.items-stretch {
+  align-items: stretch;
+}
+
+/* Align Self */
+.self-auto {
+  align-self: auto;
+}
+.self-start {
+  align-self: flex-start;
+}
+.self-end {
+  align-self: flex-end;
+}
+.self-center {
+  align-self: center;
+}
+.self-baseline {
+  align-self: baseline;
+}
+.self-stretch {
+  align-self: stretch;
+}
+
+/* Align Content */
+.content-start {
+  align-content: flex-start;
+}
+.content-end {
+  align-content: flex-end;
+}
+.content-center {
+  align-content: center;
+}
+.content-between {
+  align-content: space-between;
+}
+.content-around {
+  align-content: space-around;
+}
+.content-stretch {
+  align-content: stretch;
+}
+
+/* Flex Grow */
+.flex-grow-0 {
+  flex-grow: 0;
+}
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+/* Flex Shrink */
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+.flex-shrink-1 {
+  flex-shrink: 1;
+}
+
+/* Order */
+.order-first {
+  order: -1;
+}
+.order-last {
+  order: 999;
+}
+.order-none {
+  order: 0;
+}

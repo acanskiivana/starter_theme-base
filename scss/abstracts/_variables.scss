@@ -1,0 +1,53 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+$title-font: 'Manrope';
+
+$content-font: 'Manrope';
+$title-dark: #212121;
+$title-light: #ffffff;
+$background-light: #FCFBF4; 
+$background-dark: #232323; 
+$stroke-color: #21212180;
+$brand-color: #212121;
+$text-color: #212121;
+$accent-color: #1E2722;
+$background-color: #FCFBF4;
+
+$paragraph-line-height: 1.4;
+$title-line-height: 1.3;
+
+$radius-m: 20px;
+$radius-s: 10px;
+$radius-xs: 8px;
+
+$spacingXXXS: 8px;
+$spacingXXS: 16px;
+$spacingXS: 28px;
+$spacingS: 3.8rem;
+$spacingM: 5.6rem;
+$spacingL: 7.2rem;
+$spacingXL: 9.6rem;
+$spacingXXL: 12rem;
+$spacingXXXL: 14rem;
+
+$max-width: 1440px !default;
+$container-right-padding: 10rem;
+$container-left-padding: 10rem; 
+
+
+/// Breakpoints map
+$xsmall: 490px;
+$small: 768px;
+$medium: 990px;
+$large: 1210px;
+$xlarge: 1460px;
+$xxlarge: 1600px;
+$huge: 1930px;
+
+// Grid container 
+$gap-size: 20px;
+
+$padding-large: 6rem;
+$padding-small: 3rem;
